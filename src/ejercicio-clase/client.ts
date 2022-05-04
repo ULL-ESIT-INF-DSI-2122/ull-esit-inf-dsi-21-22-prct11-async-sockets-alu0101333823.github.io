@@ -9,13 +9,18 @@ if (process.argv.length < 3) {
   const command = argv[2];
   const args = argv.splice(3);
   
+  client.write(JSON.stringify({
+    'command': command, 'arguments': args}), () => {
+  });
+  
+  
+  let output = '';
   client.on('data', (data) => {
-    console.log(`Conexión establecida: ${data}`);
-    client.write(JSON.stringify({
-      'command': command, 'arguments': args}), () => {
-      client.end();
-    });
+    output += data;
+    client.end();
+    
   }).on('end', () => {
+    console.log(output);
     console.log('Conexión finalizada sin errores');
   }).on('error', (err) => {
     if (err) {
