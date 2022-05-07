@@ -7,7 +7,7 @@ if (process.argv.length > 3) {
   const conection = net.connect({port: 60300});
   const client = new Client(conection);
   client.on('response', (response) => {
-    console.log(response);
+    console.log(`Comando recibido con éxito:\n${response}`);
   });
 
   /**
@@ -48,7 +48,6 @@ if (process.argv.length > 3) {
           body: argv.body,
           color: argv.color,
         };
-        console.log('mando');
         conection.write(`${JSON.stringify(command)}`, (err) => {
           if (err) {
             console.log(`Something wrong while executing '${command.cmd}' command`);

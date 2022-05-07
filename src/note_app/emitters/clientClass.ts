@@ -11,14 +11,13 @@ export class Client extends EventEmitter {
   constructor(connection: EventEmitter) {
     super();
 
-    let allData = '';
-    connection.on('data', (dataChunk) => {
-      allData += dataChunk.toString();
+    let mensajeTexto = '';
+    connection.on('data', (parteMensaje) => {
+      mensajeTexto += parteMensaje.toString();
     });
-    this.emit('request', JSON.parse(allData));
 
     connection.on('end', () => {
-      console.log('Conexión terminada');
+      this.emit('response', mensajeTexto);
     });
   }
 }
