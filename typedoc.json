@@ -1,6 +1,9 @@
 {
   "entryPoints": [
-    
+    "src/note_app/client.ts",
+    "src/note_app/commandType.ts",
+    "src/note_app/emitters/clientClass.ts",
+    "src/note_app/emitters/serverClass.ts"
   ],
-  "out": "./doc"
+  "out": "./docs"
 }
