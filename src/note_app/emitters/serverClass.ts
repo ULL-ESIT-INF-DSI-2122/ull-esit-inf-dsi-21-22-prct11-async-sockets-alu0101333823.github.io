@@ -14,6 +14,11 @@ export class Server {
     const server = net.createServer((connection) => {
       console.log('Connection established!');
       let strMsg: string = '';
+
+      connection.on('close', () => {
+        console.log('User disconnected!');
+      });
+
       connection.on('data', (msg) => {
         console.log(`Message recieved!`);
         strMsg += msg;
