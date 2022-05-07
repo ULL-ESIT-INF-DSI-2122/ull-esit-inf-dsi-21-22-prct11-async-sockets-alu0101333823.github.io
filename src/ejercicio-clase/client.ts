@@ -17,8 +17,7 @@ if (process.argv.length < 3) {
   let output = '';
   client.on('data', (data) => {
     output += data;
-    client.end();
-    
+    client.end();    
   }).on('end', () => {
     console.log(output);
     console.log('Conexión finalizada sin errores');

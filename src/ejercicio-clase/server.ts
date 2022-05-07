@@ -1,7 +1,7 @@
 import { spawn } from 'child_process';
 import * as net from 'net';
 
-const server = net.createServer((conection => {
+const server = net.createServer(((conection) => {
   console.log('Conexión establecida!');
 
   let msg: string = '';
@@ -23,13 +23,13 @@ const server = net.createServer((conection => {
 
   conection.on('end', () => {
     console.log('Cliente desconectado');
-  })
+  });
 
   conection.on('error', (err) => {
     if (err) {
       console.log('Ha ocurrido un error durante la conexión');
     }
-  })
+  });
 }));
 
 server.listen(60300, () => {
